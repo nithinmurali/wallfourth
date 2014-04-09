@@ -246,12 +246,12 @@
                     <div class="wrapper">
                         <div class="quote">
                             <span>“</span>
-                            '.$review_c.'
+                                                          review here
                             <span></span>
                         </div>
                         <div class="author">
                             <img src="img/user-display.png" />
-                            <div class="name">'.$review["author"].'</div>
+                            <div class="name">      name      here          </div>
                             <div class="info">
                                  author
                             </div>
