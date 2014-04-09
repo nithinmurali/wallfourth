@@ -131,31 +131,40 @@
   #process .areas {
     margin-left: 0;
     float: right; }
-    #process .areas .circle {
-      height:150px;
+     .areas .circle {
+      height:60px;
       cursor: pointer;
       float: left;
-      margin-right: -45px;
+      margin-right: -18px;
       text-align: center;
-      width: 150px;
+      width: 60px;
       background: rgba(37, 37, 40, 0.9);
       border-radius: 100%;
       -webkit-transition: all .3s;
       -moz-transition: all .3s;
       -ms-transition: all .3s;
       transition: all .3s; }
-      #process .areas .circle:hover, #process .areas .circle.active {
+       .areas .circle:hover,  .areas .circle.active {
         background: #1189d9; }
-      #process .areas .circle img {
+       .areas .circle img {
         margin-top: 56px; }
-      #process .areas .circle span {
+       .areas .circle span {
         font-weight: 700;
-        font-size: 15px;
+        font-size: 13px;
         color: #fff;
         display: block;
-        margin-top: 70px; }
-    #process .areas .first {
+        margin-top: 21px; }
+     .areas .first {
       margin-left: 0; }
+
+      .pplgrp{
+        display: none;
+      }
+
+      .yr_pg{
+        position: relative;
+left: 33%;
+      }
 
 /* Responsive
 -------------------------------------------------- */
@@ -170,9 +179,9 @@
       margin: 0;
       float: none; }
 
-  #process .areas {
+   .areas {
     text-align: center; }
-    #process .areas .last_circle {
+     .areas .last_circle {
       float: none;
       display: inline-block;
       margin-left: -75px;
@@ -217,14 +226,14 @@
     float: none;
     margin: 0; }
 
-  #process .areas {
+   .areas {
     margin-top: 250px; }
-    #process .areas .circle {
+     .areas .circle {
       width: 100px;
       height: 100px; }
-      #process .areas .circle img {
+       .areas .circle img {
         margin-top: 22px; }
-      #process .areas .circle span {
+       .areas .circle span {
         display: none; }
-    #process .areas .last_circle {
+     .areas .last_circle {
       margin-top: 0; } }

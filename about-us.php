@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/compiled/about.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/lib/animate.css" media="screen, projection" />
     <link rel="stylesheet" href="css/lib/flexslider.css" type="text/css" media="screen" />
-
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -75,12 +75,12 @@
                                 
                                 ),
                             array(
-                                  array("Gaganjeet Singh","Convener","09029713447","gagsunny@gmail.com","fb"),
-                                  array("Yashasvi Gawali","Convener","09920733687","yashasvi.gawali@gmail.com","fb"),
-                                  array("Anand Agrawalla","Convener","07208758395","andyagarwalla@gmail.com","fb"),
-                                  array("Akash Rajwani","Convener","08888665000","aakashrajwani.iitb@gmail.com","fb"),
-                                  array("Soham","PG Convener","09820720633","condensed.moon@gmail.com","fb"),
-                                  array("Kanad Dagaonkar","Overall Coordinator, Theatre Fest’13","09833428465","kanaddagaonkar.iitb@gmail.com","fb"),
+                                  array("Gagan","Convener","09029713447","gagsunny@gmail.com","fb"),
+                                  array("Yashas","Convener","09920733687","yashasvi.gawali@gmail.com","fb"),
+                                  array("Anand ","Convener","07208758395","andyagarwalla@gmail.com","fb"),
+                                  array("Akash ","Convener","08888665000","aakashrajwani.iitb@gmail.com","fb"),
+                                  array("Som","PG Convener","09820720633","condensed.moon@gmail.com","fb"),
+                                  
                                
                                  )
 
@@ -88,26 +88,26 @@
                 
                 $num_of_col=2.0;
                 $num_of_yrs=2;    //change this to add more years
-                
+                $given_yr=14;
                 for($k=0;$k<$num_of_yrs;$k++)   
                 {   
-                    echo '<div class="row people num'.$k.'" id="'.$k.'" >'; 
-                    $n=1;
-                    for($i=0;$i<ceil(count($k)/$num_of_col);$i++)
+                    echo '<div class="row people pplgrp num'.$k.'" id="ppl_'.$k.'" >'; 
+                    $n=0;
+                    for($i=0;$i<ceil(count($mem[$k])/$num_of_col);$i++)
                     {
                         echo '<div class="row row1" >';
                             for($j=0;$j<$num_of_col;$j++)
                             {
                                 echo '
                                 <div class="col-sm-6 bio_box">
-                                    <img src="img/about/'.$mem[0][$n][0].'.png" alt="">
+                                    <img src="img/about/'.$mem[$k][$n][0].'.png" alt="">
                                     <div class="info">
-                                        <p class="name">'.$mem[0][$n][0].'</p>
-                                        <p class="area">'.$mem[0][$n][1].'</p>
-                                        <p class="area">'.$mem[0][$n][2].'</p>
-                                        <p class="arealast">'.$mem[0][$n][3].'</p>
+                                        <p class="name">'.$mem[$k][$n][0].'</p>
+                                        <p class="area">'.$mem[$k][$n][1].'</p>
+                                        <p class="area">'.$mem[$k][$n][2].'</p>
+                                        <p class="arealast">'.$mem[$k][$n][3].'</p>
                                         <!--
-                                        <a href="http://www.fb.com/'.$mem[0][$n][4].'" class="facebook">
+                                        <a href="http://www.fb.com/'.$mem[$k][$n][4].'" class="facebook">
                                             <span class="socialicons ico1"></span>
                                             <span class="socialicons_h ico1h"></span>
                                         </a>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div> ';
                                 $n++;
-                                if($n==6)$n=0;
+                                if($n==count($mem[$k])){$n=0;break;}
                             }
                         
                         echo ' </div>';
@@ -127,12 +127,31 @@
                     
                     echo '</div>';
                 }    
-
-                echo'
-                    <div class="row row1" >
+                
+                     echo'
+                    <div class="row row1 yr_pg areas" >';
+                    for($v=0; $v < $num_of_yrs ; $v++)
+                    { 
                         
-                    </div>
-                ';
+                        echo '<div class="circle" id="yr_'.$v.'">
+                                <span>'.($given_yr-$v).'</span>
+                              </div>';
+                    }
+                    echo'</div>';
+                    
+                    echo '<script>';
+                        
+                        for ($i=0; $i <$num_of_yrs ; $i++) { 
+                        echo' $("#yr_'.$i.'").click(function(){
+                            $(".circle").removeClass("active");
+                            $(this).addClass("active");
+                            $(".pplgrp").css("display","none");
+                            $("#ppl_'.$i.'").css("display","block");
+                        });';
+                        }
+                            
+                       echo' </script>';
+                    
             ?>
             </div>
         </div>
@@ -189,13 +208,14 @@
     <?php include 'footer.php'; ?>
     <!--       -->
 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+  
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
     <script type="text/javascript" src="js/flexslider.js"></script>
 
     <script type="text/javascript">
         $("#about").addClass("active");
+        $("#yr_0").trigger("click");
     </script>
 </body>
 </html>
