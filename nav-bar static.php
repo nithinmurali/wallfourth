@@ -14,15 +14,15 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     <li id="home" ><a href="index.php">HOME</a></li>
-                    <li id="tfest" ><a href="theatre-fest.php">THEATRE FEST</a></li>
+                    <li id="tfest" ><a href="theatre-fest.php?sub=all">THEATRE FEST</a></li>
                     <li id="annprod" ><a href="ann-prod.php">ANN PROD</a></li>
-                    <li id="events" class="dropdown">
-                        <a href="events.php?sub=all" class="dropdown-toggle" data-toggle="dropdown">EVENTS<b class="caret"></b></a>
+                    <li id="events" ><a href="events.php?sub=all">EVENTS</a></li>
+                    <!--    <a href="events.php?sub=all" class="dropdown-toggle" data-toggle="dropdown">EVENTS<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="events.php?sub=1">Sophie Prod</a></li>
                             <li><a href="events.php?sub=2">Freshiezza</a></li>
                             <li><a href="events.php?sub=3">FourthWall Orientation</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li id="videos" ><a href="http://www.youtube.com/user/fourthwalliitb">VIDEOS AND LINKS</a></li>
                     <li id="lookback" ><a href="lookback.php">LOOK BACK</a></li>

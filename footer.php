@@ -36,7 +36,7 @@
                     </div>
                     <div class="row copyright">
                         <div class="col-md-12">
-                            © 2013 nithin murali. All rights reserved.
+                            © 2013 nithin murali and Ranveer agarval . All rights reserved.
                         </div>
                     </div>
                 </div>            

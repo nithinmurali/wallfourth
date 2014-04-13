@@ -59,5 +59,5 @@ for($i=0; $i<=$count; $i++) {
 }
  
 echo "looped".$n;
- header("Location:admin-acess.php?msg=".$msg)
+// header("Location:admin-acess.php?msg=".$msg)
 ?>

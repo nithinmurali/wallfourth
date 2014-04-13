@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="css/compiled/index.css" type="text/css" media="screen" />    
     <link rel="stylesheet" type="text/css" href="css/lib/animate.css" media="screen, projection" />    
-
+    <link rel="stylesheet" href="css/compiled/blog.css" type="text/css" media="screen" />
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -74,43 +74,180 @@
         </article>        
     </section>
 
+     <div id="blog">
+        <div class="container">
+            <div class="section_header">
+               <!-- <h3>Events</h3>-->
+
+                <input type="text" class="search-query form-control" placeholder="Search">
+            </div>
+
             <?php
-                    $con=mysqli_connect("localhost","root","","fourthwall");
-                    // Check connection
-                    if (mysqli_connect_errno())
-                    {
-                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                    }
-                    else
-                    {
+                    error_reporting(0);
+                
+                if ((!isset($_GET['pagenum'])) || (!is_numeric($_GET['pagenum'])) || ($_GET['pagenum'] < 1)) { $pagenum = 1; } 
+                else { $pagenum = $_GET['pagenum']; } 
+                    
+                     $subt=$_GET['sub'];
+                    
+                    $dbhost = 'localhost'; 
+                    $dbuser = 'root'; 
+                    $dbpass = ''; 
+                    $db = 'fourthwall'; 
+                    $connect_db = mysql_connect ( $dbhost, $dbuser, $dbpass ) or die(mysql_error()); 
+                    mysql_select_db ( $db, $connect_db ) or die(mysql_error()); 
+
+                       
                        // $result = mysqli_query($con,"SELECT * FROM events WHERE id= " . $id) or die('cant fetch data');
-    
-                        $recent_posts = mysqli_query($con,"SELECT * FROM events ORDER BY dated ASC") or die('cant fetch data');
-                        $recent_review = mysqli_query($con,"SELECT * FROM reviews ORDER BY dated ASC") or die('cant fetch data');
-                        //$results = mysqli_query($con,"SELECT * FROM ".$_GET['type']." WHERE ID=".$_GET['id']) or die('cant fetch data');
-                        $r_row = array("","","","");
-                        $n=0;
-                        foreach ($recent_posts as $post) {
-                            $r_row[$n] = $post;
+                        if($_GET["sub"]=="all")
+                        {$result = mysql_query("SELECT * FROM tf") or die('cant fetch data');}
+                        else
+                        {$result = mysql_query("SELECT * FROM tf WHERE type = $subt") or die('cant fetch data');}
+                      
+                        $rows = mysql_num_rows($result);
+
+                        $page_rows = 9;  
+
+                        $last = ceil($rows/$page_rows);  
+                        if (($pagenum > $last) && ($last > 0)) { $pagenum = $last; } 
+
+                        
+                        $max = ($pagenum - 1) * $page_rows; 
+
+                        if($_GET["sub"]=="all")
+                        $result2 = mysql_query("SELECT  * from tf where ID > $max order by ID asc limit $page_rows") or die(mysql_error());  
+                        else
+                        $result2 = mysql_query("SELECT  * from tf where ID > $max AND type = $subt order by ID asc limit $page_rows") or die(mysql_error());  
+                        
+                        echo '<!-- Post Row -->
+                                    <div class="row post_row">';
+                        $num=1;
+                        
+                        while($row = mysql_fetch_array( $result2 ))  
+                        {  
+
+                                   // $result = mysqli_query($con,"SELECT * FROM reviews WHERE ID = " . $num) or die('cant fetch data');
+
+                                    //$row = mysqli_fetch_array($result);
+                                   //  selecting main pic
+                            if($num==4||$num==7)
+                            {
+                                echo '<!-- Post Row -->
+                                    <div class="row post_row">';
+                            }
+                                        $files = scandir('img/tf pics');
+                                        
+                                        foreach($files as $file) 
+                                        {
+
+                                             if($file=='.' || $file == '..') continue; //if system files skip
+                                             
+                                              $picid=explode('.', $file);
+                                              
+                                              if(trim($picid[0])==$row["ID"]."@1")
+                                              {
+                                                $mainpic=$file;
+                                                break;
+                                              }
+                                        }
+                                    $review= substr($row['content'],0,255) . " ... ";
+
+                                    echo '
+                                        <!-- Post -->
+                                        <div class="col-sm-4">
+                                            <div class="post">
+                                                <div class="img">
+                                                    <a href="blogpost.php?type=tf&id='. $row["ID"] .'">
+                                                        <img src="img/tf pics/'.$mainpic.'" alt="" class="img-responsive" />
+                                                    </a>
+                                                </div>
+                                                <div class="text">
+                                                    <h5><a href="blogpost.php?type=tf&id='. $row["ID"] .'">'. $row["name"].'</a></h5>
+                                                    <span class="date">'. $row["dated"] .'</span>
+                                                    <p>
+                                                    ' . substr($row["descr"], 0,150) ."...". '</p>
+                                                </div>
+                                                <div class="author_box">
+                                                    <h6> fourthwall </h6>
+                                                    
+                                                </div>
+                                                <a class="plus_wrapper" href="blogpost.php?type=tf&id='. $row["ID"] .'">
+                                                    <span>&#43;</span>
+                                                </a>
+                                            </div></div>';
+                                            $mainpic="";
+                                        $num++;              
+                                     //echo $num;
+                                     if($num==4||$num==7)
+                                    {
+                                        echo '
+                                            </div>';
+                                    }     
+                                             
+                               }
+                            echo '</div>';
+                              //first page, and to the previous page. 
                             
-                            $n++;
 
-                            if($n==4)
-                            break;
-                        }
-                        foreach ($recent_review as $review) {
-                            break;
-                        }
+                            if($last==1)
+                            {
+                                    echo'
+                                        <div class="paginator-container">
+                                            <ul class="pager">
+                                            <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+                                            <li class="next disabled"><a href="">Next &rarr;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>';
+                            }
+                           else if ($pagenum == 1)
+                            { 
+                                 echo'
+                                        <div class="paginator-container">
+                                            <ul class="pager">
+                                            <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+                                            <li class="next"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum+1).'&sub='.$subt.'">Next &rarr;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>';
+                            }  
+                            else  if($pagenum==$last)
+                            { 
+                            echo'
+                                        <div class="paginator-container">
+                                            <ul class="pager">
+                                            <li class="previous"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum-1).'&sub='.$subt.'">&larr; Previous</a></li>
+                                            <li class="next disabled"><a href="#">Next &rarr;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>'; 
+                            }
+                            else
+                            {
+                                echo'
+                                        <div class="paginator-container">
+                                            <ul class="pager">
+                                            <li class="previous"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum-1).'&sub='.$subt.'">&larr; Previous</a></li>
+                                            <li class="next"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum+1).'&sub='.$subt.'">Next &rarr;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>';
+                            }
+             
+?>
 
-                     }
-                     ///////////////////////////////////////////////////////////////////////
 
-                        echo"<h4>add an intro of theatrefest here here</h4>";
 
-                    ////////////////////////////////////////////////////////////////////
-                   
-           
-     ?>
+
+
     <!-- starts footer -->
     <footer id="footer">
         <div class="container">
@@ -125,7 +262,7 @@
                 </div>
                <?php
                $review_c= substr($review['content'],0,190) . " ... ";
-               echo ' 
+              echo ' 
                 <div class="col-sm-4 testimonials">
                     <h3 class="footer_header">
                         REVIEWS
@@ -133,12 +270,12 @@
                     <div class="wrapper">
                         <div class="quote">
                             <span>“</span>
-                            '.$review_c.'
+                                                          review here
                             <span></span>
                         </div>
                         <div class="author">
                             <img src="img/user-display.png" />
-                            <div class="name">'.$review["author"].'</div>
+                            <div class="name">      name      here          </div>
                             <div class="info">
                                  author
                             </div>
@@ -176,7 +313,7 @@
                     </div>
                     <div class="row copyright">
                         <div class="col-md-12">
-                            © 2014 FourthWall IIT Bombay.
+                            © 2014 nithin murali and Ranveer agarval . All rights reserved.
                         </div>
                     </div>
                 </div>            

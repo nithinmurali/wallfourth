@@ -289,7 +289,7 @@
                     </div>
                     <div class="row copyright">
                         <div class="col-md-12">
-                            © 2014 FourthWall IIT Bombay.
+                            © 2014 nithin murali and Ranveer agarval . All rights reserved.
                         </div>
                     </div>
                 </div>            

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2014 at 12:38 AM
+-- Generation Time: Apr 13, 2014 at 11:45 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -103,6 +103,30 @@ INSERT INTO `reviews` (`ID`, `name`, `author`, `content`, `dated`, `type`) VALUE
 (3, ' pretium. Porta', ' Diam elementum', 'Praesent massa. Diam elementum justo dolor pretium. Porta faucibus. Pharetra leo. Risus, lectus. Ullamcorper. Aliquam eros Iaculis per posuere hac viverra facilisis semper platea mattis. Netus vivamus potenti ridiculus, velit. Leo. Duis. Ultrices nec viverra etiam morbi lorem hymenaeos vitae ridiculus fusce. Dictumst nisl eros primis fringilla. Platea proin Malesuada natoque praesent egestas. Lacinia leo augue tristique vehicula ullamcorper fusce euismod lacus, eu sed aptent Montes eget netus metus a interdum nunc nostra suscipit parturient sociis mauris neque inceptos elit eget. Tincidunt mollis volutpat lorem feugiat inceptos Vehicula eu, est Tincidunt in torquent id. Ut vitae Odio habitasse velit tristique.', '2014-04-11', 1),
 (4, ' massa sempe', ' hymenaeos nostra', 'Curabitur nulla tristique mauris tristique accumsan eros conubia aliquet nibh amet hac phasellus blandit pretium curabitur eros id conubia eleifend non orci ultrices sapien Curae; nulla hac taciti faucibus facilisis odio rutrum dictumst. Cras dolor et magnis sem conubia dolor elementum. Adipiscing magna.\r\n\r\nMagna Placerat suscipit ipsum Aliquam magnis. Dis. Nulla, phasellus luctus ultricies hac class odio consequat lacus et pede proin dolor pulvinar litora praesent lorem egestas aliquet arcu hac. Lorem neque tristique laoreet torquent quam montes fames justo gravida.\r\n\r\nArcu. Porttitor sociis porttitor lobortis enim vivamus porttitor fusce odio diam lacus, feugiat fames quisque lacus rutrum aptent tincidunt arcu nonummy magnis. Taciti luctus sapien feugiat ad felis viverra cubilia non convallis nullam etiam nullam phasellus. Quisque. Pharetra parturient quis fringilla enim vitae est, nonummy hymenaeos nostra elit lacinia ultrices massa semper aliquet pretium ac pede habitant lectus, in ipsum orci magnis. Venenatis fermentum elementum nisl elit dis vulputate dolor.\r\n\r\nElementum scelerisque ullamcorper quis venenatis, parturient varius diam nunc sem senectus feugiat bibendum aliquam magnis Quam ut semper rutrum neque dictum etiam sit massa. Dictumst purus egestas nunc, aenean fermentum dictum ante ac iaculis fringilla aliquam bibendum primis elit egestas netus. Torquent lectus tortor eget sollicitudin id. Eros senectus.', '2014-04-19', 2),
 (5, ' elementum, ultrices', ' Lacinia alique', 'Turpis cubilia magnis iaculis. Posuere. Vestibulum. Conubia et porttitor turpis Sagittis duis volutpat, tellus, integer sit mus erat. Lacinia aliquet duis nascetur inceptos, ullamcorper mauris tempor taciti fames curabitur vestibulum mollis risus, elementum, ultrices nisl ornare pretium. Eleifend erat montes. Dictumst suspendisse libero posuere litora rutrum dolor gravida. Faucibus sociosqu mauris ornare erat nisi auctor quisque eleifend, velit non lorem velit. Suscipit odio vulputate magnis rhoncus, porta congue aptent vehicula lacinia arcu ac rhoncus curae; taciti dapibus etiam elit ac sociosqu primis risus. Eget congue curae; habitasse auctor facilisi metus metus blandit Laoreet pretium sem dapibus morbi. Faucibus per at.', '2014-04-12', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tf`
+--
+
+CREATE TABLE IF NOT EXISTS `tf` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `descr` text NOT NULL,
+  `content` mediumtext,
+  `dated` date DEFAULT NULL,
+  `type` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='store all events' AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `tf`
+--
+
+INSERT INTO `tf` (`ID`, `name`, `descr`, `content`, `dated`, `type`) VALUES
+(6, ' Maecenas senectus', 'Maecenas senectus netus pellentesque pharetra sapien praesent, diam, feugiat bibendum amet tristique eget risus interdum duis duis nec pulvinar massa arcu posuere nostra. Scelerisque aptent. Tellus adipiscing vel. Tristique Dignissim.', 'Maecenas senectus netus pellentesque pharetra sapien praesent, diam, feugiat bibendum amet tristique eget risus interdum duis duis nec pulvinar massa arcu posuere nostra. Scelerisque aptent. Tellus adipiscing vel. Tristique Dignissim.<br>Maecenas senectus netus pellentesque pharetra sapien praesent, diam, feugiat bibendum amet tristique eget risus interdum duis duis nec pulvinar massa arcu posuere nostra. Scelerisque aptent. Tellus adipiscing vel. Tristique Dignissim.<br>Maecenas senectus netus pellentesque pharetra sapien praesent, diam, feugiat bibendum amet tristique eget risus interdum duis duis nec pulvinar massa arcu posuere nostra. Scelerisque aptent. Tellus adipiscing vel. Tristique Dignissim.', '2014-04-05', 3),
+(7, ' tftf', 'The ranges shown above are general; you could also use the range [0-3] to match any decimal digit ranging from 0 through 3, or the range [b-v] to match any lowercase character ranging from b through v.', 'The ranges shown above are general; you could also use the range [0-3] to match any decimal digit ranging from 0 through 3, or the range [b-v] to match any lowercase character ranging from b through v.The ranges shown above are general; you could also use the range [0-3] to match any decimal digit ranging from 0 through 3, or the range [b-v] to match any lowercase character ranging from b through v.', '2014-04-01', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
