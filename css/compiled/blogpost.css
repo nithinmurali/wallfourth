@@ -31,6 +31,7 @@
       color: #9C9C9C; }
     #blog_post .post_content p {
       line-height: 24px;
+      text-align: justify;
       margin-bottom: 15px; }
     #blog_post .post_content .author_box {
       margin-top: 50px; }
@@ -139,6 +140,7 @@
           border-radius: 3px; }
       #blog_post .sidebar .box .recent p {
         margin: 0;
+        text-align: justify;
         line-height: 18px;
         font-size: 13px; }
     #blog_post .sidebar .sidebar_header {

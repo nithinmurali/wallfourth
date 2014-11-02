@@ -21,6 +21,16 @@
 </head>
 <body>
      
+     <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
      <?php include 'nav-bar static.php'; ?>
     
     <div id="blog_post">
@@ -86,8 +96,9 @@
                         }
                     
                     echo '
+                    <div class="fb-share-button" data-href="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">share</div>
                     </div>
-
+                    
                     <div class="comments">
                         <h4>Comments</h4>
                         ';
@@ -279,7 +290,7 @@
               success:function(data){
                 
                 document.getElementById("new_comment_form").reset();
-                alert(data);
+                alert("you comment is waiting for review by admin");
                 //alert("the comment is pending for approvel");
                                     },
               error:function()
@@ -293,5 +304,15 @@
         });
         
     </script>
+<?php
+        echo'    <!-- SEo-->    
+                 <meta property="og:url" content="http://samples.ogp.me/136756249803614" /> 
+                 <meta property="og:title" content="'.$row["name"] .'" />
+                 <meta property="og:description" content="'. $row["descr"] .'" /> 
+                 <meta property="og:image" content="img/events pics/'.$mainpic1.'" /> 
+                 <!-- end SEO-->
+             ';
+?>
+
 </body>
 </html>

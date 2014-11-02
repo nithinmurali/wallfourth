@@ -14,9 +14,9 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     <li id="home" ><a href="index.php">HOME</a></li>
-                    <li id="tfest" ><a href="theatre-fest.php?sub=all">THEATRE FEST</a></li>
-                    <li id="annprod" ><a href="ann-prod.php">ANN PROD</a></li>
-                    <li id="events" ><a href="events.php?sub=all">EVENTS</a></li>
+                    <li id="tfest" ><a href="theatre-fest.php?sub=all">Theatre Fest</a></li>
+                    <li id="annprod" ><a href="ann-prod.php">Ann Prod</a></li>
+                    <li id="events" ><a href="events.php?sub=all">Events</a></li>
                     <!--    <a href="events.php?sub=all" class="dropdown-toggle" data-toggle="dropdown">EVENTS<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="events.php?sub=1">Sophie Prod</a></li>
@@ -24,16 +24,10 @@
                             <li><a href="events.php?sub=3">FourthWall Orientation</a></li>
                         </ul> -->
                     </li>
-                    <li id="videos" ><a href="http://www.youtube.com/user/fourthwalliitb">VIDEOS AND LINKS</a></li>
-                    <li id="lookback" ><a href="lookback.php">LOOK BACK</a></li>
-                    <li id="reviews" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">REVIEWS<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="review.php?sub=1">Professional Plays</a></li>
-                            <li><a href="review.php?sub=2">Institute Plays</a></li>
-                        </ul>
-                    </li>
-                    <li id="about" ><a href="about-us.php">ABOUT US</a></li>
+                    <li id="videos" ><a target="" href="http://www.youtube.com/user/fourthwalliitb">Videos&Links</a></li>
+                    <li id="lookback" ><a href="lookback.php">Look back</a></li>
+                    <li id="reviews" ><a href="review.php?sub=all">Reviews</a></li>
+                    <li id="about" ><a href="about-us.php">About Us</a></li>
                     
                     
                 </ul>

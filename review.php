@@ -37,8 +37,14 @@
                 if ((!isset($_GET['pagenum'])) || (!is_numeric($_GET['pagenum'])) || ($_GET['pagenum'] < 1)) { $pagenum = 1; } 
                 else { $pagenum = $_GET['pagenum']; } 
                     
-                     $subt=$_GET['sub'];
-                    
+                    $subt=$_GET['sub'];
+                    if($subt!=1 && $subt != 2 && $subt != 'all')
+                    {
+
+                        header( "refresh:1;url=index.php" );
+                        die("invalid request .... ");
+                    }
+
                     $dbhost = 'localhost'; 
                     $dbuser = 'root'; 
                     $dbpass = ''; 

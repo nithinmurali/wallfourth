@@ -38,37 +38,25 @@
 
             For the backgrounds, you can combine from the bgs folder :D
         -->
-        <article class="slide" id="showcasing" style="background: url('img/backgrounds/landscape.png') repeat-x top center;">
+        <article class="slide" id="showcasing" style="background: url('img/backgrounds/1.jpg') repeat-x top center;">
             <img class="asset left-30 sp600 t120 z1" src="img/slides/scene1/macbook.png" />
             <div class="info">
-                <h2>The machaus of the insti.</h2>
+                <h2></h2>
             </div>
         </article>
-        <article class="slide" id="ideas" style="background: url('img/backgrounds/aqua.jpg') repeat-x top center;">
+        <article class="slide" id="ideas" style="background: url('img/backgrounds/2.jpg') repeat-x top center;">
             <div class="info">
-                <h2>We love to turn ideas into beautiful things.</h2>
+                <h2></h2>
             </div>
-            <img class="asset left-480 sp600 t260 z1" src="img/slides/scene2/left.png" />
-            <img class="asset left-210 sp600 t213 z2" src="img/slides/scene2/middle.png" />
-            <img class="asset left60 sp600 t260 z1" src="img/slides/scene2/right.png" />
         </article>
-        <article class="slide" id="tour" style="background: url('img/backgrounds/color-splash.jpg') repeat-x top center;">
-            <img class="asset left-472 sp650 t210 z3" src="img/slides/scene3/ipad.png" />
-            <img class="asset left-365 sp600 t270 z4" src="img/slides/scene3/iphone.png" />
-            <img class="asset left-350 sp450 t135 z2" src="img/slides/scene3/desktop.png" />
-            <img class="asset left-185 sp550 t220 z1" src="img/slides/scene3/macbook.png" />
+        <article class="slide" id="tour" style="background: url('img/backgrounds/3.jpg') repeat-x top center;">
             <div class="info">
-                <h2>Want more?</h2>
-                <a href="features.html">TOUR WITH US</a>
+                <h2></h2>
             </div>
         </article>
-        <article class="slide" id="responsive" style="background: url('img/backgrounds/indigo.jpg') repeat-x top center;">
-            <img class="asset left-472 sp600 t120 z3" src="img/slides/scene4/html5.png" />
-            <img class="asset left-190 sp500 t120 z2" src="img/slides/scene4/css3.png" />
+        <article class="slide" id="responsive" style="background: url('img/backgrounds/4.jpg') repeat-x top center;">
             <div class="info">
                 <h2>
-                    Responsive <strong>HTML5 & CSS3</strong>
-                    Theme
                 </h2>                
             </div>
         </article>        
@@ -103,14 +91,23 @@
                         }
 
                      }
-                     ///////////////////////////////////////////////////////////////////////
+ ?>    
 
-                        echo"<h4>add an intro of annprod here</h4>";
 
-                    ////////////////////////////////////////////////////////////////////
+                        <div style="margin-left:12%;margin-right:12%"><p>The Drama is not dead yet. Its aroma lives and so lives its soul to 
+						ameliorate. Where long span of parting can’t be a reason of surcease, we exemplify <b>‘Fourth Wall’</b>.It brings to you another big event from its store called <b>‘Annual productions’</b>, commonly known as <b>ANN PROD</b>.</p>
+
+						<p>Having started in 2005 as a part of theater festival, Ann prod is a stage which has witnessed greatest plays of the institute. This year, it is scheduled as a 2 day event comprising of  6 brilliant plays and a streetplay on electricity. Every play in its own unique way challenges the throne of grandeur. The motivation of ensuring a primary check on quality justifies the reason of not keeping Ann Prod as a competition. It explicitly provides a platform where best talents of the institute can be exhibited.</p>
+
+						<p>Theater is a verb before it is a noun, an act before it is a place. Every year in the month of January, playwrights foregather to contribute back their best with everything what they have learnt here. It’s time when they let off the debt. All renowned or passed out actors from the institute whom we ever have heard of, have gained their fame and excelled in their genre right from this stage. Be it the countrywide acclaimed ‘Naali K Kutte’ or still performing ‘Jaago Jaago Jaago’, Ann prod stage has given them all. On an experimental basis, this Ann Prod presents to you a special performance by juniors to give them an opportunity so as to nurture their talent out of an amateur act. </p>
+
+						<p>In the end of the line, we hereby promise you one more year of magnificent <b>‘Annual Productions’</b>. The very place to display your endowments is set. All we need to conserve is the charismatic spirit of excellence. Hopefully in this journey of Ann Prod you not only gain a wonderful experience to cherish but also travel to a new dimension of Dramatics.</p>
+						<br>
+						P.S: Keep watching this space to check on updates or further announcements on Annual Productions."
+						</div>				
                    
            
-     ?>
+    
     <!-- starts footer -->
     <footer id="footer">
         <div class="container">
@@ -133,14 +130,14 @@
                     <div class="wrapper">
                         <div class="quote">
                             <span>“</span>
-                            '.$review_c.'
+                                                          Achcha laga dekh ke ki IIT-Bombay students jo kal ke engineers hai, itne interested hai Theatre aur Drama mein. Iska shrey inke teachers ko aur inke seniors ko jaata hai. All the best, FourthWall and aage achcha kaam karte raho!
                             <span></span>
                         </div>
                         <div class="author">
-                            <img src="img/user-display.png" />
-                            <div class="name">'.$review["author"].'</div>
+                            <img src="img/reviews pics/ns2.jpg" />
+                            <div class="name">Nawazzudin Siddiqui</div>
                             <div class="info">
-                                 author
+                                 Actor- Theatre and Films, NSD Alumni
                             </div>
                         </div>
                     </div>
@@ -149,9 +146,12 @@
                 
                 <div class="col-sm-4 contact">
                     <h3 class="footer_header">
-                        Calender
+                        Calendar
                     </h3>
-                    
+					<iframe src="https://www.google.com/calendar/embed?src=fourthwall.iitb%40gmail.com&ctz=Asia/Calcutta" style="border: 0" width="400" height="400" frameborder="0" scrolling="no">
+					</iframe>
+                  <!--<iframe src="https://www.google.com/calendar/embed?title=Dramatics%20IIT-Bombay&amp;height=500&amp;wkst=1&amp;bgcolor=%23666666&amp;ctz=Asia%2FCalcutta" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
+                  --> 
                 </div>
             </div>
             
@@ -159,15 +159,15 @@
                 <div class="col-md-12">
                     <div class="row social">
                         <div class="col-md-12">
-                            <a href="index.html#" class="facebook">
+                            <a href="https://www.facebook.com/groups/fourthwall" class="facebook">
                                 <span class="socialicons ico1"></span>
                                 <span class="socialicons_h ico1h"></span>
                             </a>
-                            <a href="index.html#" class="twitter">
+                            <a href="https://twitter.com/FourthWallIITB" class="twitter">
                                 <span class="socialicons ico2"></span>
                                 <span class="socialicons_h ico2h"></span>
                             </a>
-                            <a href="index.html#" class="gplus">
+                            <a href="https://gymkhana.iitb.ac.in/~cultural" class="gymkhana">
                                 <span class="socialicons ico3"></span>
                                 <span class="socialicons_h ico3h"></span>
                             </a>
@@ -176,12 +176,12 @@
                     </div>
                     <div class="row copyright">
                         <div class="col-md-12">
-                            © 2014 nithin murali and Ranveer agarval . All rights reserved.
+                            Created by <a href="https://www.facebook.com/imnithinm">Nithin Murali</a> and <a href="https://www.facebook.com/ranveeraggarwal">Ranveer Aggarwal</a>. </n> Maintained by Team <a href="about-us.php">FourthWall</a>
                         </div>
                     </div>
                 </div>            
             </div>
-        </div>
+        </div>                                     
     </footer>
 
     <!-- Scripts -->

@@ -513,3 +513,22 @@
       box-shadow: none; }
   #showcase .features_op1_row .last {
     margin-bottom: 0; } }
+/*-----------------------------------------------------------------------*/
+
+#features{
+  width: 75%;
+}
+
+.sidebar{
+  margin: 0;
+  padding: 40px 19px 40px 28px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 1px #cfcfcf;
+  float: right;
+  width: 25%;
+}
+
+#firstrow{
+  margin-right: 2%;
+}

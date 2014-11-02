@@ -38,41 +38,42 @@
 
             For the backgrounds, you can combine from the bgs folder :D
         -->
-        <article class="slide" id="showcasing" style="background: url('img/backgrounds/landscape.png') repeat-x top center;">
-            <img class="asset left-30 sp600 t120 z1" src="img/slides/scene1/macbook.png" />
+        <article class="slide" id="ideas" style="background: url('img/backgrounds/warm.jpg') repeat-x top center;">
             <div class="info">
-                <h2>The machaus of the insti.</h2>
+                <h2>Express your innermost emotions...</h2>
             </div>
-        </article>
-        <article class="slide" id="ideas" style="background: url('img/backgrounds/aqua.jpg') repeat-x top center;">
-            <div class="info">
-                <h2>We love to turn ideas into beautiful things.</h2>
-            </div>
-            <img class="asset left-480 sp600 t260 z1" src="img/slides/scene2/left.png" />
-            <img class="asset left-210 sp600 t213 z2" src="img/slides/scene2/middle.png" />
-            <img class="asset left60 sp600 t260 z1" src="img/slides/scene2/right.png" />
-        </article>
-        <article class="slide" id="tour" style="background: url('img/backgrounds/color-splash.jpg') repeat-x top center;">
-            <img class="asset left-472 sp650 t210 z3" src="img/slides/scene3/ipad.png" />
-            <img class="asset left-365 sp600 t270 z4" src="img/slides/scene3/iphone.png" />
-            <img class="asset left-350 sp450 t135 z2" src="img/slides/scene3/desktop.png" />
-            <img class="asset left-185 sp550 t220 z1" src="img/slides/scene3/macbook.png" />
-            <div class="info">
-                <h2>Want more?</h2>
-                <a href="features.html">TOUR WITH US</a>
-            </div>
+            <img class="asset left-400 sp300 t200 z1" src="img/slides/scene2/parmar.jpg" />
+            <img class="asset left-210 sp400 t180 z2" src="img/slides/scene2/ranjan.jpg" />
+            <img class="asset left60 sp500 t275 z3" src="img/slides/scene2/mansi.jpg" />
         </article>
         <article class="slide" id="responsive" style="background: url('img/backgrounds/indigo.jpg') repeat-x top center;">
-            <img class="asset left-472 sp600 t120 z3" src="img/slides/scene4/html5.png" />
-            <img class="asset left-190 sp500 t120 z2" src="img/slides/scene4/css3.png" />
+            <img class="asset left-550 sp300 t120 z3" src="img/slides/scene3/streetplay.jpg" />
+            <!--img class="asset left-190 sp400 t10 z2" src="img/slides/scene4/css3.png" /-->
             <div class="info">
+                <center>
                 <h2>
-                    Responsive <strong>HTML5 & CSS3</strong>
-                    Theme
-                </h2>                
+                    ..and make the world </n>
+                </h2>
+                <h2>
+                    <big><strong> YOUR STAGE </strong></big>
+                </h2>
+		</center>                
             </div>
         </article>        
-    </section>
+        <article class="slide" id="tour" style="background: url('img/backgrounds/silver-thumb.jpg') repeat-x top center;">
+            <img class="asset left-350 sp1000 120 z3" src="img/slides/scene4/wordle.png" />
+            <!--img class="asset left-365 sp900 t270 z4" src="img/slides/scene3/iphone.png" />
+            <img class="asset left-350 sp750 t135 z2" src="img/slides/scene3/desktop.png" />
+            <img class="asset left-185 sp800 t220 z1" src="img/slides/scene3/macbook.png" /-->
+            <div class="info">
+                <center>
+                <h2>What all can you do?</h2>
+                <a href="events.php?sub=all">Tour With Us</a>
+                </center>
+            </div>
+        </article>
+    
+        </section>
 
             <?php
                     $con=mysqli_connect("localhost","root","","fourthwall");
@@ -85,19 +86,40 @@
                     {
                        // $result = mysqli_query($con,"SELECT * FROM events WHERE id= " . $id) or die('cant fetch data');
     
-                        $recent_posts = mysqli_query($con,"SELECT * FROM events ORDER BY dated ASC") or die('cant fetch data');
-                        $recent_review = mysqli_query($con,"SELECT * FROM reviews ORDER BY dated ASC") or die('cant fetch data');
+                        $recent_posts = mysqli_query($con,"SELECT * FROM events ORDER BY dated DESC") or die('cant fetch data');
+                        $recent_review = mysqli_query($con,"SELECT * FROM reviews ORDER BY dated DESC") or die('cant fetch data');
                         //$results = mysqli_query($con,"SELECT * FROM ".$_GET['type']." WHERE ID=".$_GET['id']) or die('cant fetch data');
                         $r_row = array("","","","");
+                        
                         $n=0;
                         foreach ($recent_posts as $post) {
                             $r_row[$n] = $post;
                             
-                            $n++;
-
+                            if ( strtotime($post["dated"]) < strtotime(date("Y-m-d")) ) {
+                               if($n==0)
+                               {
+                                
+                                if (isset($prev_post)) {
+                                    $up_post = $prev_post;
+                                }
+                                else{
+                                    $up_post=$post;
+                                }
+                                
+                                $n++;
+                                $r_row[$n] = $post;
+                               }
+                               else
+                               {
+                                $n++;
+                                $r_row[$n]=$post;
+                               }
+                            }
+                            $prev_post=$post;
                             if($n==4)
                             break;
                         }
+                        
                         foreach ($recent_review as $review) {
                             break;
                         }
@@ -113,7 +135,7 @@
                                              
                                               $picid=explode('.', $file);
                                               
-                                              if(trim($picid[0])==$r_row[0]["ID"]."@1")
+                                              if(trim($picid[0])==$up_post["ID"]."@1")
                                               {
                                                 $mainpic[0]=$file;
                                                 
@@ -136,27 +158,34 @@
                                         }
            
     echo '
-    <div id="features">
-        <div class="container">
-            <div class="section_header">
-                <h3>Upcoming Event</h3>
-            </div> 
-            <div class="row feature">
-                <div class="col-sm-6">
-                    <img src="img/events pics/'.$mainpic[0].'" class="img-responsive" />
-                </div>
-                <div class="col-sm-6 info">
-                    <h3>
-                        '.$r_row[0]["name"].'
-                    </h3>
-                    <p>
-                        '.$r_row[0]["descr"].'
-                    </p>
+    <div id="firstrow " >
+        <div id="features" class="">
+            <div class="container">
+                <div class="section_header">
+                    <h3>Upcoming Event</h3>
+                </div> 
+                <div class="row feature">
+                    <div class="col-sm-6">
+                        <img src="img/events pics/'.$mainpic[0].'" class="img-responsive" />
+                    </div>
+                    <a href="blogpost.php?type=events&id='. $up_post["ID"] .'">
+                        <div class="col-sm-6 info">
+                            <h3>
+                                '.$up_post["name"].'
+                            </h3>
+                            <p>
+                                '.$up_post["descr"].'
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </div>
+        </div> 
+        <div id="join" class="sidebar">
+        
         </div>
-    </div> 
-   
+
+    </div>
     <div id="showcase">
         <div class="container">
             <div class="section_header">
@@ -246,14 +275,14 @@
                     <div class="wrapper">
                         <div class="quote">
                             <span>“</span>
-                                                          review here
+                                                          Achcha laga dekh ke ki IIT-Bombay students jo kal ke engineers hai, itne interested hai Theatre aur Drama mein. Iska shrey inke teachers ko aur inke seniors ko jaata hai. All the best, FourthWall and aage achcha kaam karte raho!
                             <span></span>
                         </div>
                         <div class="author">
-                            <img src="img/user-display.png" />
-                            <div class="name">      name      here          </div>
+                            <img src="img/reviews pics/ns2.jpg" />
+                            <div class="name">Nawazzudin Siddiqui</div>
                             <div class="info">
-                                 author
+                                 Actor- Theatre and Films, NSD Alumni
                             </div>
                         </div>
                     </div>
@@ -262,9 +291,12 @@
                 
                 <div class="col-sm-4 contact">
                     <h3 class="footer_header">
-                        Calender
+                        Calendar
                     </h3>
-                    
+					<iframe src="https://www.google.com/calendar/embed?src=fourthwall.iitb%40gmail.com&ctz=Asia/Calcutta" style="border: 0" width="400" height="400" frameborder="0" scrolling="no">
+					</iframe>
+                  <!--<iframe src="https://www.google.com/calendar/embed?title=Dramatics%20IIT-Bombay&amp;height=500&amp;wkst=1&amp;bgcolor=%23666666&amp;ctz=Asia%2FCalcutta" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
+                  --> 
                 </div>
             </div>
             
@@ -272,15 +304,15 @@
                 <div class="col-md-12">
                     <div class="row social">
                         <div class="col-md-12">
-                            <a href="index.html#" class="facebook">
+                            <a href="https://www.facebook.com/groups/fourthwall" class="facebook">
                                 <span class="socialicons ico1"></span>
                                 <span class="socialicons_h ico1h"></span>
                             </a>
-                            <a href="index.html#" class="twitter">
+                            <a href="https://twitter.com/FourthWallIITB" class="twitter">
                                 <span class="socialicons ico2"></span>
                                 <span class="socialicons_h ico2h"></span>
                             </a>
-                            <a href="index.html#" class="gplus">
+                            <a href="https://gymkhana.iitb.ac.in/~cultural" class="gymkhana">
                                 <span class="socialicons ico3"></span>
                                 <span class="socialicons_h ico3h"></span>
                             </a>
@@ -289,12 +321,12 @@
                     </div>
                     <div class="row copyright">
                         <div class="col-md-12">
-                            © 2014 nithin murali and Ranveer agarval . All rights reserved.
+                            Created by <a href="https://www.facebook.com/imnithinm">Nithin Murali</a> and <a href="https://www.facebook.com/ranveeraggarwal">Ranveer Aggarwal</a>. </n> Maintained by Team <a href="about-us.php">FourthWall</a>
                         </div>
                     </div>
                 </div>            
             </div>
-        </div>
+        </div>                                     
     </footer>
 
     <!-- Scripts -->

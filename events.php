@@ -39,6 +39,13 @@
                     
                      $subt=$_GET['sub'];
                     
+                    if( $subt != 'all')
+                    {
+                        $subt = "all";
+                        //header( "refresh:1;url=index.php" );
+                        //die("invalid request .... ");
+                    }
+
                     $dbhost = 'localhost'; 
                     $dbuser = 'root'; 
                     $dbpass = ''; 
@@ -48,37 +55,49 @@
 
                        
                        // $result = mysqli_query($con,"SELECT * FROM events WHERE id= " . $id) or die('cant fetch data');
-                        if($_GET["sub"]=="all")
-                        {$result = mysql_query("SELECT * FROM events") or die('cant fetch data');}
+                        /*if($_GET["sub"]=="all")
+                        {$result = mysql_query("SELECT * FROM events ORDER BY dated DESC") or die('cant fetch data');}
                         else
-                        {$result = mysql_query("SELECT * FROM events WHERE type = $subt") or die('cant fetch data');}
+                        {$result = mysql_query("SELECT * FROM events WHERE type = $subt ORDER BY dated DESC") or die('cant fetch data');}
                       
                         $rows = mysql_num_rows($result);
-
+                        */
                         $page_rows = 9;  
 
                         $last = ceil($rows/$page_rows);  
                         if (($pagenum > $last) && ($last > 0)) { $pagenum = $last; } 
 
-                        
                         $max = ($pagenum - 1) * $page_rows; 
-
-                        if($_GET["sub"]=="all")
-                        $result2 = mysql_query("SELECT  * from events where ID > $max order by ID asc limit $page_rows") or die(mysql_error());  
-                        else
-                        $result2 = mysql_query("SELECT  * from events where ID > $max AND type = $subt order by ID asc limit $page_rows") or die(mysql_error());  
                         
+                        if ($pagenum ==1) {
+                            $last_date = date("Y-m-d");
+                        }else{
+                            $last_date=$_GET['last'];
+                            if (strlen($last_date)!=10 || !preg_match("/[0-9]{4}.[0-9]{2}.[0-9]{2}/", $last_date) || preg_match("/[a-zA-Z]/", $last_date) ){
+                                header( "refresh:1;url=index.php" );
+                                die("invalid request .... ");
+                            }
+                        }
+                        
+                        if($subt =="all")
+                        $result2 = mysql_query("SELECT  * from events where dated < '$last_date' order by dated desc limit $page_rows") or die(mysql_error());  
+                        else
+                        $result2 = mysql_query("SELECT  * from events where dated > '$last_date' AND type = $subt order by dated desc limit $page_rows") or die(mysql_error());  
                         echo '<!-- Post Row -->
                                     <div class="row post_row">';
                         $num=1;
-                        
+                        //echo $last_date ;
                         while($row = mysql_fetch_array( $result2 ))  
                         {  
 
-                                   // $result = mysqli_query($con,"SELECT * FROM reviews WHERE ID = " . $num) or die('cant fetch data');
-
-                                    //$row = mysqli_fetch_array($result);
-                                   //  selecting main pic
+                            // $result = mysqli_query($con,"SELECT * FROM reviews WHERE ID = " . $num) or die('cant fetch data');
+                            //$row = mysqli_fetch_array($result);
+                          
+                            if ($num == $page_rows) {
+                                //$last_date = '2011-03-01' ;
+                                $last_date = date($row["dated"]);
+                            }
+                            //selecting main pic
                             if($num==4||$num==7)
                             {
                                 echo '<!-- Post Row -->
@@ -124,19 +143,19 @@
                                                     <span>&#43;</span>
                                                 </a>
                                             </div></div>';
-                                            $mainpic="";
+                                            $mainpic = "";
                                         $num++;              
-                                     //echo $num;
-                                     if($num==4||$num==7)
+                                     
+                                    if($num==4||$num==7)
                                     {
                                         echo '
                                             </div>';
                                     }     
                                              
                                }
-                            echo '</div>';
-                              //first page, and to the previous page. 
                             
+                            echo '</div>';
+                            //first page, and to the previous page. 
 
                             if($last==1)
                             {
@@ -157,7 +176,7 @@
                                         <div class="paginator-container">
                                             <ul class="pager">
                                             <li class="previous disabled"><a href="#">&larr; Previous</a></li>
-                                            <li class="next"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum+1).'&sub='.$subt.'">Next &rarr;</a></li>
+                                            <li class="next"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum+1).'&last='.$last_date.'">Next &rarr;</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -169,7 +188,7 @@
                             echo'
                                         <div class="paginator-container">
                                             <ul class="pager">
-                                            <li class="previous"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum-1).'&sub='.$subt.'">&larr; Previous</a></li>
+                                            <li class="previous"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum-1).'&last='.$last_date.'">&larr; Previous</a></li>
                                             <li class="next disabled"><a href="#">Next &rarr;</a></li>
                                             </ul>
                                         </div>
@@ -182,8 +201,8 @@
                                 echo'
                                         <div class="paginator-container">
                                             <ul class="pager">
-                                            <li class="previous"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum-1).'&sub='.$subt.'">&larr; Previous</a></li>
-                                            <li class="next"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum+1).'&sub='.$subt.'">Next &rarr;</a></li>
+                                            <li class="previous"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum-1).'&last='.$last_date.'">&larr; Previous</a></li>
+                                            <li class="next"><a href="'.$_SERVER['PHP_SELF'].'?pagenum='.($pagenum+1).'&last='.$last_date.'">Next &rarr;</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -192,7 +211,6 @@
                             }
              
 ?>
-
 
     <!-- starts footer -->
     <?php include 'footer.php'; ?>
