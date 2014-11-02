@@ -181,9 +181,13 @@
                 </div>
             </div>
         </div> 
-        <div id="join" class="sidebar">
-        
-        </div>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Learn to Create Websites</h1>
+        <p>In todays world internet is the most popular way…</p>
+        <p><a href="#" class="btn btn-primary btn-lg">Learn more</a></p>
+    </div>
+</div>
 
     </div>
     <div id="showcase">

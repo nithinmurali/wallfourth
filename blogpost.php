@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/lib/animate.css" media="screen, projection" />
     <link rel="stylesheet" href="css/compiled/blogpost.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -96,7 +97,7 @@
                         }
                     
                     echo '
-                    <div class="fb-share-button" data-href="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">share</div>
+                    <div class="fb-share-button" data-layout="button" data-width="600px" data-href="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">
                     </div>
                     
                     <div class="comments">
