@@ -239,7 +239,8 @@
 -------------------------------------------------- */
 #features {
   margin-top: 70px;
-  margin-bottom: -20px; }
+  margin-bottom: -20px;
+  margin-left: 30px; }
   #features .feature {
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 65px; }
@@ -517,11 +518,11 @@
  
 .sidebar{
   margin: 0;
-padding: 40px 19px 40px 28px;
-background: #F5F4F4;
-border-radius: 4px;
-box-shadow: 0 1px 3px 1px #cfcfcf;
-width: 30%;
+  padding: 40px 19px 40px 28px;
+  background: #F5F4F4;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 1px #cfcfcf;
+  width: 30%;
 }
 
 #firstrow{
@@ -534,4 +535,5 @@ width: 30%;
 
 .social{
   margin-top: 100px;
+  padding-right: 90px;
 }
