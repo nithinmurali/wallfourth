@@ -25,7 +25,7 @@
                         </ul> -->
                     </li>
                     <li id="videos" ><a target="" href="http://www.youtube.com/user/fourthwalliitb">Videos&Links</a></li>
-                    <li id="lookback" ><a href="lookback.php">Look back</a></li>
+                   
                     <li id="reviews" ><a href="review.php?sub=all">Reviews</a></li>
                     <li id="about" ><a href="about-us.php">About Us</a></li>
                     
