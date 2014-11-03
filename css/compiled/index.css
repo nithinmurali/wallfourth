@@ -514,21 +514,24 @@
   #showcase .features_op1_row .last {
     margin-bottom: 0; } }
 /*-----------------------------------------------------------------------*/
-
-#features{
-  width: 75%;
-}
-
+ 
 .sidebar{
   margin: 0;
-  padding: 40px 19px 40px 28px;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px 1px #cfcfcf;
-  float: right;
-  width: 25%;
+padding: 40px 19px 40px 28px;
+background: #F5F4F4;
+border-radius: 4px;
+box-shadow: 0 1px 3px 1px #cfcfcf;
+width: 30%;
 }
 
 #firstrow{
   margin-right: 2%;
+}
+
+.setwidth{
+  width: 100%;
+}
+
+.social{
+  margin-top: 100px;
 }

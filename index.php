@@ -7,6 +7,8 @@
 	
     <!-- Styles -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/font-awesome/css/bootstrap-social.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/compiled/bootstrap-overrides.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/compiled/theme.css" />
 
@@ -48,7 +50,7 @@
         </article>
         <article class="slide" id="responsive" style="background: url('img/backgrounds/indigo.jpg') repeat-x top center;">
             <img class="asset left-550 sp300 t120 z3" src="img/slides/scene3/streetplay.jpg" />
-            <!--img class="asset left-190 sp400 t10 z2" src="img/slides/scene4/css3.png" /-->
+            
             <div class="info">
                 <center>
                 <h2>
@@ -62,9 +64,6 @@
         </article>        
         <article class="slide" id="tour" style="background: url('img/backgrounds/silver-thumb.jpg') repeat-x top center;">
             <img class="asset left-350 sp1000 120 z3" src="img/slides/scene4/wordle.png" />
-            <!--img class="asset left-365 sp900 t270 z4" src="img/slides/scene3/iphone.png" />
-            <img class="asset left-350 sp750 t135 z2" src="img/slides/scene3/desktop.png" />
-            <img class="asset left-185 sp800 t220 z1" src="img/slides/scene3/macbook.png" /-->
             <div class="info">
                 <center>
                 <h2>What all can you do?</h2>
@@ -159,8 +158,9 @@
            
     echo '
     <div id="firstrow " >
-        <div id="features" class="">
-            <div class="container">
+        <div class="row setwidth" >
+        <div id="features" class="col-sm-8" style="float:left;" >
+            <div class="">
                 <div class="section_header">
                     <h3>Upcoming Event</h3>
                 </div> 
@@ -181,13 +181,19 @@
                 </div>
             </div>
         </div> 
-<div class="jumbotron">
-    <div class="container">
-        <h1>Learn to Create Websites</h1>
-        <p>In todays world internet is the most popular way…</p>
-        <p><a href="#" class="btn btn-primary btn-lg">Learn more</a></p>
-    </div>
-</div>
+        <div class="jumbotron sidebar social col-sm-4" style="float:right;" >
+            <div class="">
+            <h2 style="text-align=center;" >Join Us</h2>
+                <a class="btn btn-block btn-social btn-lg btn-facebook" href="https://www.facebook.com/groups/fourthwall/" >
+                    <i class="fa fa-facebook"></i> find us in fb
+                </a>
+
+                <a class="btn btn-block btn-social btn-lg btn-google-plus" href="http://tinyurl.com/join-fw" >
+                    <i class="fa fa-google-plus"></i> Join our google group
+                </a>
+            </div>
+        </div>
+        </div>
 
     </div>
     <div id="showcase">
